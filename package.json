@@ -1,0 +1,21 @@
+{
+  "name": "@minigigs/sdk",
+  "version": "1.0.0",
+  "description": "SDK for interacting with the MiniGigs micro-task marketplace on Celo Mainnet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "celo",
+    "minigigs",
+    "marketplace",
+    "sdk",
+    "web3"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ethers": "^6.11.1"
+  }
+}
