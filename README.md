@@ -5,7 +5,7 @@ The official SDK for interacting with the MiniGigs micro-task marketplace on Cel
 ## Installation
 
 ```bash
-npm install @minigigs/sdk ethers
+npm install minigigs-sdk ethers
 ```
 
 ## Quick Start
@@ -14,7 +14,7 @@ npm install @minigigs/sdk ethers
 
 ```javascript
 const { ethers } = require("ethers");
-const { getMiniGigsContract, MINIGIGS_ADDRESS } = require("@minigigs/sdk");
+const { getMiniGigsContract, MINIGIGS_ADDRESS } = require("minigigs-sdk");
 
 const provider = new ethers.JsonRpcProvider("https://forno.celo.org");
 const contract = getMiniGigsContract(provider);
@@ -27,7 +27,7 @@ console.log(`Total Gigs: ${count}`);
 ### Post a Gig
 
 ```javascript
-const { getMiniGigsContract, getCUSDContract, MINIGIGS_ADDRESS } = require("@minigigs/sdk");
+const { getMiniGigsContract, getCUSDContract, MINIGIGS_ADDRESS } = require("minigigs-sdk");
 const { ethers } = require("ethers");
 
 const wallet = new ethers.Wallet("YOUR_PRIVATE_KEY", provider);

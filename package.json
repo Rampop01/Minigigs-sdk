@@ -1,6 +1,6 @@
 {
-  "name": "@minigigs/sdk",
-  "version": "1.0.0",
+  "name": "minigigs-sdk",
+  "version": "1.0.1",
   "description": "SDK for interacting with the MiniGigs micro-task marketplace on Celo Mainnet",
   "main": "index.js",
   "scripts": {
@@ -13,8 +13,12 @@
     "sdk",
     "web3"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Rampop01",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rampop01/Minigigs-sdk.git"
+  },
   "dependencies": {
     "ethers": "^6.11.1"
   }
