@@ -21,18 +21,20 @@ jobs:
 
       - name: Install SDK & Dependencies
         run: |
-          npm install minigigs-sdk ethers
+          npm install minigigs-sdk@latest ethers
           
       - name: Verify Contract Connection
         run: |
           node -e "
-          const { MINIGIGS_ADDRESS } = require('minigigs-sdk');
-          console.log('✅ SDK Loaded Successfully');
-          console.log('📍 Target Address:', MINIGIGS_ADDRESS);
-          if (MINIGIGS_ADDRESS.startsWith('0x')) {
-            console.log('✨ Contract Verification Passed');
-          } else {
-            console.log('❌ Address Format Error');
+          try {
+            const sdk = require('minigigs-sdk');
+            const addr = sdk.MINIGIGS_ADDRESS || 'failed';
+            console.log('✅ SDK Version Integrated');
+            console.log('📍 Address Found:', addr);
+            if (!addr.startsWith('0x')) throw new Error('Invalid Address');
+            process.exit(0);
+          } catch (e) {
+            console.error('❌ Integration Test Failed:', e.message);
             process.exit(1);
           }
           "
