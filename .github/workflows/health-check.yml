@@ -19,9 +19,11 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install SDK & Dependencies
+      - name: Execute Isolated Health Check
         run: |
+          mkdir tmp-verify
+          cd tmp-verify
+          npm init -y
           npm install minigigs-sdk@latest ethers
-          
-      - name: Verify SDK
-        run: node test-sdk.js
+          echo "📦 Testing Registry Version of minigigs-sdk..."
+          node ../test-sdk.js

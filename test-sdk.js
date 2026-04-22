@@ -1,4 +1,4 @@
-const { MINIGIGS_ADDRESS, getMiniGigsContract } = require('./index.js');
+const { MINIGIGS_ADDRESS, getMiniGigsContract } = require('minigigs-sdk');
 const { ethers } = require('ethers');
 
 async function test() {
