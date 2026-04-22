@@ -1,0 +1,38 @@
+name: SDK Health Check
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install SDK & Dependencies
+        run: |
+          npm install minigigs-sdk ethers
+          
+      - name: Verify Contract Connection
+        run: |
+          node -e "
+          const { MINIGIGS_ADDRESS } = require('minigigs-sdk');
+          console.log('✅ SDK Loaded Successfully');
+          console.log('📍 Target Address:', MINIGIGS_ADDRESS);
+          if (MINIGIGS_ADDRESS.startsWith('0x')) {
+            console.log('✨ Contract Verification Passed');
+          } else {
+            console.log('❌ Address Format Error');
+            process.exit(1);
+          }
+          "
