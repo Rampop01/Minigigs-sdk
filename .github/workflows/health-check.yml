@@ -23,22 +23,5 @@ jobs:
         run: |
           npm install minigigs-sdk@latest ethers
           
-      - name: Diagnostic Log
-        run: npm list minigigs-sdk
-        
-      - name: Verify SDK Metadata
-        run: |
-          node -e "
-          try {
-            const sdk = require('minigigs-sdk');
-            console.log('✅ SDK Import Success');
-            console.log('📍 Address:', sdk.MINIGIGS_ADDRESS);
-            if (!sdk.MINIGIGS_ADDRESS) throw new Error('Missing Metadata');
-            process.exit(0);
-          } catch (e) {
-            console.log('⚠️ Attempting direct-path fallback...');
-            const localSdk = require('./index.js');
-            console.log('✅ Local Sync Success');
-            process.exit(0);
-          }
-          "
+      - name: Verify SDK
+        run: node test-sdk.js
