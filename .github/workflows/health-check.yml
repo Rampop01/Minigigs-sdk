@@ -26,4 +26,4 @@ jobs:
           npm init -y
           npm install minigigs-sdk@latest ethers
           echo "📦 Testing Registry Version of minigigs-sdk..."
-          node ../test-sdk.js
+          cp ../test-sdk.js . && node test-sdk.js
